@@ -1,0 +1,5 @@
+runtime: rust
+startCommand: ./target/release/zenn_rss
+buildCommand: cargo build --release
+port: 8808
+memory: 512mb

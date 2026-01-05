@@ -1,2 +1,3 @@
-# zenn_rss
- My Zenn RSS
+# Amenaruya Home
+ 
+ © 2026 Amenaruya All rights reserved.
