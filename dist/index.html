@@ -1,34 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>RSS</title>
+        <link
+            rel="stylesheet"
+            href="./dist/styles-a27c6295e687963d.css"
+            integrity="sha384-eLcHU0y3ord5oT3PUP8Gitwx9A+asDBCrQPA4s+X0PPPRNLSUvQMekzsozcoy8ufabe"
+        />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSS</title>
-    <link rel="stylesheet" href="./dist/styles-a27c6295e687963d.css"
-        integrity="sha384-8vBv26R9PluQSmbzT300zTdLMxE0sHKm/yQVgO8L84RfFO0LzebZcDYa81iHucEH" />
+        <script type="module">
+            import init, * as bindings from "./dist/rss_yew-976a95fd13bd18db.js";
+            const wasm = await init({
+                module_or_path: "./dist/rss_yew-976a95fd13bd18db_bg.wasm",
+            });
 
-    <script type="module">
-        import init, * as bindings from './dist/rss_yew-976a95fd13bd18db.js';
-        const wasm = await init({ module_or_path: './dist/rss_yew-976a95fd13bd18db_bg.wasm' });
+            window.wasmBindings = bindings;
 
+            dispatchEvent(
+                new CustomEvent("TrunkApplicationStarted", {
+                    detail: { wasm },
+                }),
+            );
+        </script>
+        <link
+            rel="modulepreload"
+            href="./dist/rss_yew-976a95fd13bd18db.js"
+            crossorigin="anonymous"
+            integrity="sha384-VhtA4N1HRlDXDUFUzUwSx6aMUwbEq4oLv7BYbAcbyde6INjVsQu1Rf+GGX86wo2X"
+        />
+        <link
+            rel="preload"
+            href="./dist/rss_yew-976a95fd13bd18db_bg.wasm"
+            crossorigin="anonymous"
+            integrity="sha384-Fg3HlV2ikzNtSyFh4mAW+7iSRVn/60z59oRlqKzTBRAMI6yVzViwvx74GLEmhlph"
+            as="fetch"
+            type="application/wasm"
+        />
+    </head>
 
-        window.wasmBindings = bindings;
-
-
-        dispatchEvent(new CustomEvent("TrunkApplicationStarted", { detail: { wasm } }));
-
-    </script>
-    <link rel="modulepreload" href="./dist/rss_yew-976a95fd13bd18db.js" crossorigin="anonymous"
-        integrity="sha384-VhtA4N1HRlDXDUFUzUwSx6aMUwbEq4oLv7BYbAcbyde6INjVsQu1Rf+GGX86wo2X">
-    <link rel="preload" href="./dist/rss_yew-976a95fd13bd18db_bg.wasm" crossorigin="anonymous"
-        integrity="sha384-Fg3HlV2ikzNtSyFh4mAW+7iSRVn/60z59oRlqKzTBRAMI6yVzViwvx74GLEmhlph" as="fetch"
-        type="application/wasm">
-</head>
-
-<body>
-    <div class="container"></div>
-    <!-- <script>"use strict";
+    <body>
+        <div class="container"></div>
+        <!-- <script>"use strict";
 
         (function () {
 
@@ -158,6 +172,5 @@
 
         })()
     </script> -->
-</body>
-
+    </body>
 </html>
